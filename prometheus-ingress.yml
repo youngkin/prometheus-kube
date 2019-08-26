@@ -9,7 +9,8 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - http:
+  - host: prom.kube
+    http:
       paths:
       - path: /graph
         backend:
@@ -48,6 +49,10 @@ spec:
           serviceName: prometheus-service
           servicePort: http
       - path: /chart
+        backend:
+          serviceName: prometheus-service
+          servicePort: http
+     - path: /metrics
         backend:
           serviceName: prometheus-service
           servicePort: http

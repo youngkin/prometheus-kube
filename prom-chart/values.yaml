@@ -23,8 +23,8 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: 
-      paths: [/prometheus]
+    - host: prom.kube
+      paths: [/,/graph,/graph#,/status,/flags,/config,/rules,/targets,/service-discovery,/alerts,/chart,/metrics]
 
   tls: []
   #  - secretName: chart-example-tls

@@ -6,7 +6,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: prometheus-ingress
-  namespace: monitoring
+  namespace: default
 spec:
   rules:
   - host: prom.kube
@@ -52,7 +52,7 @@ spec:
         backend:
           serviceName: prometheus-service
           servicePort: http
-     - path: /metrics
+      - path: /metrics
         backend:
           serviceName: prometheus-service
           servicePort: http

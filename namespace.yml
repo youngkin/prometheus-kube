@@ -2,9 +2,9 @@
   "kind": "Namespace",
   "apiVersion": "v1",
   "metadata": {
-    "name": "monitoring",
+    "name": "monitor",
     "labels": {
-      "name": "monitoring"
+      "name": "monitor"
     }
   }
 }

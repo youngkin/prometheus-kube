@@ -28,8 +28,19 @@ spec:
             - name: http
               containerPort: 9090
               protocol: TCP
+          volumeMounts:
+            - name: prometheus-config-volume
+              mountPath: /etc/prometheus/
+            - name: prometheus-storage-volume
+              mountPath: /prometheus/
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+      serviceAccountName: prometheus
       volumes:
         - name: prometheus-config-volume
           configMap:

@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: prometheus-deployment
-  namespace: monitoring
+  namespace: default
 spec:
   replicas: 1
   template:
@@ -10,6 +10,11 @@ spec:
       labels:
         app: prometheus-server
     spec:
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
       containers:
         - name: prometheus
           image: napnap75/rpi-prometheus:prometheus-2.8.1
@@ -32,12 +37,13 @@ spec:
 
         - name: prometheus-storage-volume
           emptyDir: {}
+      serviceAccountName: prometheus
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: prometheus-service
-  namespace: monitoring
+  namespace: default
   annotations:
       prometheus.io/scrape: 'true'
       prometheus.io/port:   '9090'

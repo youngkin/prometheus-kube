@@ -4,6 +4,8 @@
 
 replicaCount: 1
 
+nameSpace: monitor
+
 image:
   repository: napnap75/rpi-prometheus
   tag: prometheus-2.8.1
@@ -19,12 +21,12 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations: {
+    traefik.frontend.rule.type: PathPrefix
+  }
   hosts:
     - host: prom.kube
-      paths: [/,/graph,/graph#,/status,/flags,/config,/rules,/targets,/service-discovery,/alerts,/chart,/metrics]
+      paths: [/]
 
   tls: []
   #  - secretName: chart-example-tls

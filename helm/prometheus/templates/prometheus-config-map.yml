@@ -2,9 +2,9 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prometheus-server-conf
-  labels:
-    name: prometheus-server-conf
-  namespace: default
+  namespace:  {{ .Values.nameSpace }}
+  labels: 
+{{ include "prometheus.labels" . | indent 4 }}
 data:
   prometheus.yml: |-
     global:

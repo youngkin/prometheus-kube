@@ -9,7 +9,7 @@ To get a fully working Prometheus deployment:
     1. `kubectl create ns monitor`
 2. Complete the deployment from the project root directory
 
-    1. `helm install --namespace default --name prometheus helm/prometheus` 
+    1. `helm install --namespace monitor --name prometheus helm/prometheus` 
 
 To verify the deployment:
 

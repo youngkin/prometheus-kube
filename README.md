@@ -4,7 +4,9 @@ Deploys Promethues into a Kubernetes cluster.
 
 To get a fully working Prometheus deployment:
 
-1. Create the namespace for Prometheus resources
+1. Clone this repository
+2. `cd` into the project root directory (`prometheus-kube`) 
+3. Create the namespace for Prometheus resources
 
     1. `kubectl create ns monitor`
 2. Complete the deployment from the project root directory
